@@ -110,7 +110,10 @@ if ($stmt = $con->prepare($query)) {
 </nav>
 
   <div class="container">
-      <div class="row mt-5">
+      <div class="display-4 mt-4 mb-2">
+        Dashboard
+      </div>
+      <div class="row mt-2">
         <div class="col-12">
           Hello <span class="badge badge-pill badge-dark"><?= $_SESSION['email'] ?></span>
         </div>
@@ -138,6 +141,12 @@ if ($stmt = $con->prepare($query)) {
               </div>
               <?php
             }
+          } else {
+            ?>
+              <div class="col-12">
+                <h5 class="text-muted text-center">No posts are created on the whole website. Wow :O</h5>
+              </div>
+            <?php
           }
         ?>
           </div>
