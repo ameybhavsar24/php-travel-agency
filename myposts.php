@@ -70,34 +70,48 @@ if ($stmt = $con->prepare($query)) {
 </nav>
 
   <div class="container">
-      <div class="row mt-5">
+      <div class="display-4 mt-4 mb-2">
+        Your posts
+      </div>
+      <div class="row mt-2">
         <div class="col-12">
           Hello <span class="badge badge-pill badge-dark"><?= $_SESSION['email'] ?></span>
         </div>
       </div>
       <div class="row">
-        <?php
-          if (!empty($posts)) {
-            foreach($posts as $key=>$post) {
-              ?>
-              <div class="col-12">
-              <div class="card ">
-                <!-- <div class="card-header">
-                  Featured
-                </div> -->
-                <div class="card-body">
-                  <h5 class="card-title text-center"><?= $post['title'] ?></h5>
-                  <p class="card-text"><?= $post['body'] ?></p>
+          <div class="col-sm-2 col-12 mt-2">
+            <button type="button" data-toggle="modal" data-target="#newPostModal" class="btn btn-primary">New post</button>
+          </div>
+          <div class="col-sm-10 col-12">
+            <?php
+              if (!empty($posts)) {
+                foreach($posts as $key=>$post) {
+                  ?>
+                  <div class="col-12">
+                  <div class="card ">
+                    <!-- <div class="card-header">
+                      Featured
+                    </div> -->
+                    <div class="card-body">
+                      <h5 class="card-title text-center"><?= $post['title'] ?></h5>
+                      <p class="card-text"><?= $post['body'] ?></p>
+                    </div>
+                    <div class="card-footer text-muted">
+                      <?= $post['postCreation'] ?>
+                    </div>
+                  </div>
+                  </div>
+                  <?php
+                }
+              } else {
+                ?>
+                <div class="col-12">
+                  <h5 class="text-center text-muted">You haven't created any posts.</h5>
                 </div>
-                <div class="card-footer text-muted">
-                  <?= $post['postCreation'] ?>
-                </div>
-              </div>
-              </div>
-              <?php
-            }
-          }
-        ?>
+                <?php
+              }
+            ?>
+          </div>
       </div>
   </div>
   <!-- Optional JavaScript -->
